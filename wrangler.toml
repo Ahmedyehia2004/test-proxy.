@@ -1,0 +1,3 @@
+name = "test-proxy-5ht"
+main = "worker.js"
+compatibility_date = "2025-04-12"
