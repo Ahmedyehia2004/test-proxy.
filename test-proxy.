@@ -1,0 +1,15 @@
+addEventListener('fetch', event => {
+  event.respondWith(handleRequest(event.request));
+});
+
+async function handleRequest(request) {
+  const url = new URL(request.url).searchParams.get('target') || 'http://example.com';
+  const response = await fetch(url, request);
+  return new Response(response.body, {
+    status: response.status,
+    headers: {
+      'Content-Type': response.headers.get('Content-Type'),
+      'Content-Encoding': 'br'
+    }
+  });
+}
